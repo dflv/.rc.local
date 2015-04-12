@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BACKUP_SURFIX="-`date +"%Y%m%d%H%M%S"`"
+BACKUP_SURFIX=".`date +"%Y%m%d%H%M%S"`"
 CONFIG_PREFIX="_"
 
 # replace configuration
@@ -22,6 +22,7 @@ _rep_conf ack ackrc
 # openbox
 # ssh
 # tmux
+_rep_conf tmux tmux.conf
 # vim
 _rep_conf vim vimrc.local
 _rep_conf vim vimrc.before.local
