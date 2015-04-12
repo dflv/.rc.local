@@ -2,4 +2,11 @@
 
 My Local Configurations
 
-dafu DOT lv AT gmail DOT com
+$ ___ ack
+   |_ bash
+   |_ git
+   |_ openbox
+   |_ ssh
+   |_ tmux
+   |_ vim
+   |_ zsh
