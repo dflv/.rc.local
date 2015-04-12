@@ -1,0 +1,33 @@
+" disable auto cd when nerdtree starts
+" let g:spf13_no_autochdir = 1 <-- move to .vimrc.before.local
+let NERDTreeChDirMode = 0
+let g:nerdtree_tabs_startup_cd = 0
+let g:ackprg = "ack-grep -w -s -H --nocolor --nogroup --column"
+
+" orig settings
+set nu
+set nocompatible
+set hlsearch
+set nobackup
+set incsearch
+set cindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" no-ignorecase
+set noic
+
+" disable mouse
+set mouse=""
+
+" set color-256
+set t_Co=256
+
+" keymap
+nnoremap <silent> <F5> :NERDTreeToggle<CR>
+nnoremap <silent> <F6> :Tagbar<CR>
+nnoremap <silent> <F7> :Ack!<CR>
+
+" extra vim scripts
+source /usr/share/vim-scripts/plugin/cscope_maps.vim"
