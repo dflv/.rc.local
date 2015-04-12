@@ -3,10 +3,10 @@
 My Local Configurations
 
 $ ___ ack<br>
-   |_ bash
-   |_ git
-   |_ openbox
-   |_ ssh
-   |_ tmux
-   |_ vim
-   |_ zsh
+   |_ bash<br>
+   |_ git<br>
+   |_ openbox<br>
+   |_ ssh<br>
+   |_ tmux<br>
+   |_ vim<br>
+   |_ zsh<br>
