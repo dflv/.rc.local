@@ -4,6 +4,7 @@ My Local Configurations
 
 * ack
 * bash
+* bin
 * git
 * openbox
 * ssh
