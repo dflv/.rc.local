@@ -3,6 +3,7 @@
 let NERDTreeChDirMode = 0
 let g:nerdtree_tabs_startup_cd = 0
 let g:ackprg = "ack-grep -w -s -H --nocolor --nogroup --column"
+let g:tagbar_sort = 0
 
 " orig settings
 set nu
