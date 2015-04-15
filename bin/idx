@@ -1,5 +1,8 @@
 #!/bin/bash
 
-cscope -Rkb
+# cscope -Rkb
+find $PWD -name '*.[ch]' -exec echo \"{}\" \; | sort -u > cscope.files
+cscope -bk
+rm -f cscope.files
 ctags -R
 
