@@ -30,6 +30,17 @@ set t_Co=256
 nnoremap <silent> <F5> :NERDTreeToggle<CR>
 nnoremap <silent> <F6> :Tagbar<CR>
 nnoremap <silent> <F7> :Ack!<CR>
+nnoremap <silent> < :bp<CR>
+nnoremap <silent> > :bn<CR>
+nnoremap <silent> 1 :b1<CR>
+nnoremap <silent> 2 :b2<CR>
+nnoremap <silent> 3 :b3<CR>
+nnoremap <silent> 4 :b4<CR>
+nnoremap <silent> 5 :b5<CR>
+nnoremap <silent> 6 :b6<CR>
+nnoremap <silent> 7 :b7<CR>
+nnoremap <silent> 8 :b8<CR>
+nnoremap <silent> 9 :b9<CR>
 
 " enable extra vim plugins
 source /usr/share/vim-scripts/plugin/cscope_maps.vim"
