@@ -39,6 +39,7 @@ nnoremap <silent> 6 :b6<CR>
 nnoremap <silent> 7 :b7<CR>
 nnoremap <silent> 8 :b8<CR>
 nnoremap <silent> 9 :b9<CR>
+nnoremap <Leader>r :RunInInteractiveShell<space>
 
 " enable extra vim plugins
 source /usr/share/vim-scripts/plugin/cscope_maps.vim"
