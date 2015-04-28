@@ -39,4 +39,5 @@ _rep_conf tmux tmux.conf
 _rep_conf vim vimrc.local
 _rep_conf vim vimrc.before.local
 _rep_conf vim vimrc.bundles.local
+_rep_conf vim gvimrc
 # zsh
