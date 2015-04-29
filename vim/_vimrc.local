@@ -18,8 +18,6 @@ set t_Co=256
 " set right margin
 set colorcolumn=80
 
-colorscheme candycode
-
 " disable auto cd when nerdtree starts
 " let g:spf13_no_autochdir = 1 <-- move to .vimrc.before.local
 let g:NERDTreeChDirMode = 0
