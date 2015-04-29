@@ -18,17 +18,21 @@ set t_Co=256
 " set right margin
 set colorcolumn=80
 
+colorscheme candycode
+
 " disable auto cd when nerdtree starts
 " let g:spf13_no_autochdir = 1 <-- move to .vimrc.before.local
-let NERDTreeChDirMode = 0
+let g:NERDTreeChDirMode = 0
+let g:NERDTreeWinPos = "right"
 let g:nerdtree_tabs_startup_cd = 0
 let g:ackprg = "ack-grep -w -s -H --nocolor --nogroup --column"
 let g:tagbar_sort = 0
 let g:autoclose_on = 0
+let g:tagbar_left = 1
 
 " keymap
-nnoremap <silent> <F5> :NERDTreeToggle<CR>
-nnoremap <silent> <F6> :Tagbar<CR>
+nnoremap <silent> <F5> :Tagbar<CR>
+nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :Ack!<CR>
 nnoremap <silent> < :bp<CR>
 nnoremap <silent> > :bn<CR>
