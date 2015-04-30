@@ -15,8 +15,12 @@ set noic
 set mouse=""
 " set color-256
 set t_Co=256
+" disable visual indent (with g:indent_guides_auto_colors)
+set nolist
 " set right margin
 set colorcolumn=80
+
+colorscheme kolor
 
 " disable auto cd when nerdtree starts
 " let g:spf13_no_autochdir = 1 <-- move to .vimrc.before.local
@@ -27,6 +31,7 @@ let g:ackprg = "ack-grep -w -s -H --nocolor --nogroup --column"
 let g:tagbar_sort = 0
 let g:autoclose_on = 0
 let g:tagbar_left = 1
+let g:indent_guides_auto_colors = 0
 
 " keymap
 nnoremap <silent> <F5> :Tagbar<CR>
