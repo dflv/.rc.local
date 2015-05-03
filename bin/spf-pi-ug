@@ -1,0 +1,5 @@
+#!/bin/bash
+
+" before calling this command,
+" echo Bundle \'spf13/vim-colors\' >> ~/.vimrc.bundles.local
+vim +BundleInstall! +BundleClean +q

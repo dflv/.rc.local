@@ -24,7 +24,7 @@ colorscheme kolor
 
 " disable auto cd when nerdtree starts
 " let g:spf13_no_autochdir = 1 <-- move to .vimrc.before.local
-let g:autoclose_on = 0
+" let g:autoclose_on = 0 # autoclose is replaced by autopairs
 let g:NERDTreeChDirMode = 0
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 40
