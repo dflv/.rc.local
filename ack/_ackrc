@@ -1,2 +1,5 @@
 --ignore-file=is:cscope.out
 --ignore-file=is:tags
+--sort-files
+--color
+--heading
