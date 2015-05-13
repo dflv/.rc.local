@@ -35,6 +35,7 @@ let g:tagbar_autofocus = 1
 let g:tagbar_left = 1
 let g:tagbar_width = 50
 let g:indent_guides_auto_colors = 0
+let g:AutoPairs = {}
 
 " keymap
 nnoremap <silent> <F5> :Tagbar<CR>
