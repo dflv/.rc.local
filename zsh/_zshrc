@@ -73,10 +73,10 @@ export PATH=".:/home/dafu/Bin:/opt/aarch64-linux-android-4.8/bin:/opt/aarch64-no
 source /usr/share/autojump/autojump.sh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 set -o vi
-# [v] disable history-sharing
+# [vvv] disable history-sharing
 setopt NO_SHARE_HISTORY
 setopt APPEND_HISTORY
-# # [^] disable history-sharing
+# [^^^] disable history-sharing
 bindkey "^?" backward-delete-char
 bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-char
