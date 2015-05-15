@@ -53,3 +53,10 @@ nnoremap <silent> 7 :b7<CR>
 nnoremap <silent> 8 :b8<CR>
 nnoremap <silent> 9 :b9<CR>
 nnoremap <Leader>r :RunInInteractiveShell<space>
+nnoremap <Leader>gs :RunInInteractiveShell git status<CR>
+nnoremap <Leader>gd :RunInInteractiveShell git diff<CR>
+nnoremap <Leader>gc :RunInInteractiveShell git commit -as<CR>
+nnoremap <Leader>gb :RunInInteractiveShell git blame<CR>
+nnoremap <Leader>gl :RunInInteractiveShell git log<CR>
+nnoremap <Leader>gp :RunInInteractiveShell git push<CR>
+nnoremap <Leader>gw :RunInInteractiveShell git write<CR>
