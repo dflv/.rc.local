@@ -1,2 +1,7 @@
 set mouse=a
 set guifont=Ubuntu\ Mono\ 13
+set guioptions-=m
+
+if filereadable("/home/dafu/.gvimrc.extra")
+    source /home/dafu/.gvimrc.extra
+endif
