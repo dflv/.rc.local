@@ -98,7 +98,7 @@ alias rm='rm -i'
 alias hi='history'
 
 export GREP_OPTIONS="--exclude-dir=.git --exclude-dir=.svn --exclude=cscope.out --exclude=tags --exclude=.*.o.cmd"
-export TERM="screen-256color"
+### export TERM="screen-256color"
 
 ### autorun tmux, keep it the last setting
 ### if [ "$TMUX" = "" ]; then tmux; exit; fi
