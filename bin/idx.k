@@ -25,9 +25,11 @@ cat $TMP_FILE_0 | grep "^./arch/$ARCH" >& $TMP_FILE_2
 cp -f $TMP_FILE_2 $TMP_FILE_3
 cat $TMP_FILE_1 >> $TMP_FILE_3
 
+rm -f cscope.out
 cscope -kb -i$TMP_FILE_3
+rm -f tags
 ctags -L $TMP_FILE_3
 
-rm -f $TMP_FILE*
+rm -f $TMP_FILE_0 $TMP_FILE_1 $TMP_FILE_2 $TMP_FILE_3
 
 popd
