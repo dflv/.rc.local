@@ -2,3 +2,5 @@ set noautochdir
 
 let g:spf13_no_autochdir = 1
 let g:spf13_no_omni_complete = 1
+" cpu = 100% when launching big tags
+let g:neocomplete#disable_auto_complete=1
