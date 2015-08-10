@@ -39,6 +39,7 @@ let g:AutoPairs = {}
 
 " keymap
 nnoremap <silent> <F2> :ls<CR>
+nnoremap <silent> <F3> :NeoCompleteToggle<CR>
 nnoremap <silent> <F5> :Tagbar<CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :Ack!<CR>
