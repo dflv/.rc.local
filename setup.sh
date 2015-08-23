@@ -29,6 +29,8 @@ _rep_conf()
 
 # ack
 _rep_conf ack ackrc
+# ag
+_rep_conf ag agrc
 # bash
 # git
 # openbox

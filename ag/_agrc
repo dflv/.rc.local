@@ -1,0 +1,4 @@
+--case-sensitive
+--ignore cscope.out
+--ignore tags
+--nobreak
