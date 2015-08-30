@@ -36,10 +36,13 @@ let g:tagbar_left = 1
 let g:tagbar_width = 50
 let g:indent_guides_auto_colors = 0
 let g:AutoPairs = {}
+let g:CCTreeOrientation = "rightbelow"
+let g:CCTreeWindowMinWidth = 40
 
 " keymap
 nnoremap <silent> <F2> :ls<CR>
 nnoremap <silent> <F3> :NeoCompleteToggle<CR>
+nnoremap <silent> <F4> :CCTreeLoadDB<CR><CR>
 nnoremap <silent> <F5> :Tagbar<CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :Ack!<CR>
