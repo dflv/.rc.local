@@ -38,6 +38,7 @@ let g:indent_guides_auto_colors = 0
 let g:AutoPairs = {}
 let g:CCTreeOrientation = "rightbelow"
 let g:CCTreeWindowMinWidth = 40
+let g:rainbow_active = 0
 
 " keymap
 nnoremap <silent> <F2> :ls<CR>
@@ -65,3 +66,4 @@ nnoremap <Leader>gb :RunInInteractiveShell git blame<CR>
 nnoremap <Leader>gl :RunInInteractiveShell git log<CR>
 nnoremap <Leader>gp :RunInInteractiveShell git push<CR>
 nnoremap <Leader>gw :RunInInteractiveShell git write<CR>
+
