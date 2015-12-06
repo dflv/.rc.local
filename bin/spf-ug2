@@ -1,6 +1,0 @@
-#!/bin/bash
-
-pushd ~/.vim
-git pull
-vim +BundleInstall! +BundleClean +q
-popd
