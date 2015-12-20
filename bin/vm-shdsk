@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo vmware-toolbox-cmd disk shrink /
