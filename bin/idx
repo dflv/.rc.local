@@ -2,7 +2,7 @@
 
 # cscope -Rkb
 find $PWD -name '*.[ch]' -exec echo \"{}\" \; | sort -u > cscope.files
-cscope -bk
+cscope -bkq
 rm -f cscope.files
 ctags -R
 
