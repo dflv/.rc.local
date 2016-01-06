@@ -67,3 +67,14 @@ nnoremap <Leader>gl :RunInInteractiveShell git log<CR>
 nnoremap <Leader>gp :RunInInteractiveShell git push<CR>
 nnoremap <Leader>gw :RunInInteractiveShell git write<CR>
 
+" auto-load cscope
+function! LoadCscope()
+    let db = findfile("cscope.out", ".;")
+    if (!empty(db))
+        let path = strpart(db, 0, match(db, "/cscope.out$"))
+        set nocsverb " suppress 'duplicate connection' error
+        exe "cs add " . db . " " . path
+        set csverb
+    endif
+endfunction
+au BufEnter /* call LoadCscope()
