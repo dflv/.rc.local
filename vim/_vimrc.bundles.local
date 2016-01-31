@@ -1,6 +1,7 @@
 Bundle 'christoomey/vim-run-interactive'
 Bundle 'chazy/cscope_maps'
 Bundle 'hari-rangarajan/CCTree'
+Bundle 'vim-airline/vim-airline-themes'
 
 UnBundle 'amirh/HTML-AutoCloseTag'
 UnBundle 'pythoncomplete'
