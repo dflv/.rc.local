@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -f cscope.* tags
 find $PWD -name '*.[chS]' -exec echo \"{}\" \; | sort -u > cscope.files
 cscope -bkq
 rm -f cscope.files
