@@ -35,18 +35,31 @@ let g:tagbar_autofocus = 1
 let g:tagbar_left = 1
 let g:tagbar_width = 50
 let g:indent_guides_auto_colors = 0
-let g:AutoPairs = {}
+let g:AutoPairsFlyMode = 1
 let g:CCTreeOrientation = "rightbelow"
 let g:CCTreeWindowMinWidth = 40
-let g:rainbow_active = 0
+" NOTE:
+" <Leader><Leader>w to call EasyMotion
+" <Leader><Leader>fx to find 'x'
+" <Leader> is ',' currently
+let g:EasyMotion_smartcase = 1
+let g:rainbow_active = 1
+let g:airline_theme = "molokai"
+let g:CCTreeKeyTraceForwardTree = '<C-\>>'
+let g:CCTreeKeyTraceReverseTree = '<C-\><'
+let g:CCTreeKeyHilightTree = '<C-l>'
+let g:CCTreeKeySaveWindow = '<C-\>y'
+let g:CCTreeKeyToggleWindow = '<C-\>w'
+let g:CCTreeKeyCompressTree = 'zs'
+let g:CCTreeKeyDepthPlus = '<C-\>='
+let g:CCTreeKeyDepthMinus = '<C-\>-'
 
 " keymap
-nnoremap <silent> <F2> :ls<CR>
-nnoremap <silent> <F3> :NeoCompleteToggle<CR>
-nnoremap <silent> <F4> :CCTreeLoadDB<CR><CR>
 nnoremap <silent> <F5> :Tagbar<CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
 nnoremap <silent> <F7> :Ack!<CR>
+nnoremap <silent> <F9> :CCTreeLoadXRefDB<CR>
+nnoremap <silent> <F10> :NeoCompleteToggle<CR>
 nnoremap <silent> < :bp<CR>
 nnoremap <silent> > :bn<CR>
 nnoremap <silent> 1 :b1<CR>
@@ -66,6 +79,9 @@ nnoremap <Leader>gb :RunInInteractiveShell git blame<CR>
 nnoremap <Leader>gl :RunInInteractiveShell git log<CR>
 nnoremap <Leader>gp :RunInInteractiveShell git push<CR>
 nnoremap <Leader>gw :RunInInteractiveShell git write<CR>
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " auto-load cscope
 function! LoadCscope()
@@ -78,6 +94,8 @@ function! LoadCscope()
     endif
 endfunction
 au BufEnter /* call LoadCscope()
+
+""" vvv NeoComplete configurations vvv """
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -150,3 +168,32 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+""" ^^^ NeoComplete configurations ^^^ """
+
+""" vvv rainbow configurations vvv """
+
+let g:rainbow_conf = {
+    \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+    \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+    \   'operators': '_,_',
+    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \   'separately': {
+    \       '*': {},
+    \       'tex': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+    \       },
+    \       'lisp': {
+    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+    \       },
+    \       'vim': {
+    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+    \       },
+    \       'html': {
+    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+    \       },
+    \       'css': 0,
+    \   }
+    \}
+
+""" ^^^ rainbow configurations ^^^ """

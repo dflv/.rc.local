@@ -32,4 +32,7 @@ ctags -L $TMP_FILE_3
 
 rm -f $TMP_FILE_0 $TMP_FILE_1 $TMP_FILE_2 $TMP_FILE_3
 
+### for cctree built from ccglue.sourceforge.net
+ccglue -I
+
 popd
