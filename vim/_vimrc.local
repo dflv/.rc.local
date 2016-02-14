@@ -35,7 +35,7 @@ let g:tagbar_autofocus = 1
 let g:tagbar_left = 1
 let g:tagbar_width = 50
 let g:indent_guides_auto_colors = 0
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 let g:CCTreeOrientation = "rightbelow"
 let g:CCTreeWindowMinWidth = 40
 " NOTE:
@@ -44,7 +44,7 @@ let g:CCTreeWindowMinWidth = 40
 " <Leader> is ',' currently
 let g:EasyMotion_smartcase = 1
 let g:rainbow_active = 1
-let g:airline_theme = "molokai"
+let g:airline_theme = "papercolor"
 let g:CCTreeKeyTraceForwardTree = '<C-\>>'
 let g:CCTreeKeyTraceReverseTree = '<C-\><'
 let g:CCTreeKeyHilightTree = '<C-l>'

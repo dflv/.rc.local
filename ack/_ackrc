@@ -1,4 +1,8 @@
+--ignore-file=is:ccglue.out
+--ignore-file=is:ccglue.out.idx
+--ignore-file=is:cscope.in.out
 --ignore-file=is:cscope.out
+--ignore-file=is:cscope.po.out
 --ignore-file=is:tags
 --sort-files
 --color
