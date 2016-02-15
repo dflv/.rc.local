@@ -35,9 +35,6 @@ let g:tagbar_autofocus = 1
 let g:tagbar_left = 1
 let g:tagbar_width = 50
 let g:indent_guides_auto_colors = 0
-let g:AutoPairsFlyMode = 0
-let g:CCTreeOrientation = "rightbelow"
-let g:CCTreeWindowMinWidth = 40
 " NOTE:
 " <Leader><Leader>w to call EasyMotion
 " <Leader><Leader>fx to find 'x'
@@ -45,6 +42,8 @@ let g:CCTreeWindowMinWidth = 40
 let g:EasyMotion_smartcase = 1
 let g:rainbow_active = 1
 let g:airline_theme = "papercolor"
+let g:CCTreeOrientation = "rightbelow"
+let g:CCTreeWindowMinWidth = 40
 let g:CCTreeKeyTraceForwardTree = '<C-\>>'
 let g:CCTreeKeyTraceReverseTree = '<C-\><'
 let g:CCTreeKeyHilightTree = '<C-l>'
@@ -53,6 +52,13 @@ let g:CCTreeKeyToggleWindow = '<C-\>w'
 let g:CCTreeKeyCompressTree = 'zs'
 let g:CCTreeKeyDepthPlus = '<C-\>='
 let g:CCTreeKeyDepthMinus = '<C-\>-'
+""" disable auto_pairs
+""" let g:AutoPairs = {}
+" NOTE:
+" add a pure paren by Ctrl+V paren in editting mode
+let g:AutoPairsMapCR = 1
+let g:AutoPairsCenterLine = 0
+let g:AutoPairsFlyMode = 1
 
 " keymap
 nnoremap <silent> <F5> :Tagbar<CR>
