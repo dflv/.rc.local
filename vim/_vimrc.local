@@ -94,6 +94,11 @@ autocmd FileType c highlight clear SpellCap
 autocmd FileType c highlight clear SpellRare
 autocmd FileType c highlight clear SpellLocal
 
+autocmd FileType h highlight clear SpellBad
+autocmd FileType h highlight clear SpellCap
+autocmd FileType h highlight clear SpellRare
+autocmd FileType h highlight clear SpellLocal
+
 autocmd FileType S highlight clear SpellBad
 autocmd FileType S highlight clear SpellCap
 autocmd FileType S highlight clear SpellRare
