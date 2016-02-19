@@ -58,7 +58,7 @@ let g:CCTreeKeyDepthMinus = '<C-\>-'
 " add a pure paren by Ctrl+V paren in editting mode
 let g:AutoPairsMapCR = 1
 let g:AutoPairsCenterLine = 0
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 
 " keymap
 nnoremap <silent> <F5> :Tagbar<CR>
