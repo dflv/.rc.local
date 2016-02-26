@@ -8,6 +8,7 @@ set cindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set autochdir
 
 " no-ignorecase
 set noic
