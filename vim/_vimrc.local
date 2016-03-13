@@ -8,7 +8,7 @@ set cindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set autochdir
+""" set autochdir
 
 " no-ignorecase
 set noic
@@ -26,7 +26,7 @@ colorscheme kolor
 " disable auto cd when nerdtree starts
 " let g:spf13_no_autochdir = 1 <-- move to .vimrc.before.local
 " let g:autoclose_on = 0 # autoclose is replaced by autopairs
-let g:NERDTreeChDirMode = 0
+let g:NERDTreeChDirMode = 1
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 40
 let g:nerdtree_tabs_startup_cd = 0
