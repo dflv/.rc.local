@@ -2,6 +2,7 @@ Bundle 'christoomey/vim-run-interactive'
 Bundle 'chazy/cscope_maps'
 Bundle 'hari-rangarajan/CCTree'
 Bundle 'Shougo/vimproc'
+Bundle 'christoomey/vim-tmux-navigator'
 
 UnBundle 'amirh/HTML-AutoCloseTag'
 UnBundle 'pythoncomplete'
