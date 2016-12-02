@@ -42,7 +42,8 @@ let g:indent_guides_auto_colors = 0
 " <Leader> is ',' currently
 let g:EasyMotion_smartcase = 1
 let g:rainbow_active = 1
-let g:airline_theme = "papercolor"
+" let g:airline_theme = "papercolor"
+let g:airline_theme = "light"
 let g:CCTreeOrientation = "rightbelow"
 let g:CCTreeWindowMinWidth = 40
 let g:CCTreeKeyTraceForwardTree = '<C-\>>'
