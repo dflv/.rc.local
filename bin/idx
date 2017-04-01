@@ -1,9 +1,14 @@
 #!/bin/bash
 
 rm -f cscope.* tags
-find $PWD -name '*.[chS]' -exec echo \"{}\" \; | sort -u > cscope.files
-cscope -bkq
-rm -f cscope.files
-ctags -R
+if [ -e "./idx.files" ];
+then
+    cscope -bkq -i./idx.files
+    ctags -R -L ./idx.files
+else
+    cscope -bkRq
+    ctags -R
+fi
+
 ### for cctree built from ccglue.sourceforge.net
-ccglue -I
+### ccglue -S cscope.out -o cctree.out
