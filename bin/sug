@@ -6,6 +6,7 @@ GIT_REPO=(
         "amazon-freertos"
         "darwin-xnu"
         "f9-kernel"
+        "linux"
         "lwip"
         "mbed-coap"
         "mbed-os"
@@ -20,23 +21,14 @@ for git_repo in ${GIT_REPO[@]}; do
     pushd "$PREFIX/$git_repo" >& /dev/null
 
     if [ -e .git ]; then
-
-        UPSTREAM=${1:-'@{u}'}
-        LOCAL=$(git rev-parse @)
-        REMOTE=$(git rev-parse "$UPSTREAM")
-        BASE=$(git merge-base @ "$UPSTREAM")
-
-        if [ $LOCAL = $REMOTE ]; then
-            echo "[ UP2DATE ] $PREFIX/$git_repo"
-        elif [ $LOCAL = $BASE ]; then
-            git pull >& /dev/null
+        echo "[ CHCKING ] $PREFIX/$git_repo"
+        ret=`git pull --no-stat | grep "Already up to date\."`
+        if [ "1" == "$ret" ]; then
             cscope -Rkb >& /dev/null
             ctags -R >& /dev/null
             echo "[ UPDATED ] $PREFIX/$git_repo"
-        elif [ $REMOTE = $BASE ]; then
-            echo "[NEED2PUSH] $PREFIX/$git_repo"
         else
-            echo "[CONFLICTS] $PREFIX/$git_repo"
+            echo "[ UP2DATE ] $PREFIX/$git_repo"
         fi
     fi
 
