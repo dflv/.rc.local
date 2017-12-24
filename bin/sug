@@ -21,14 +21,21 @@ for git_repo in ${GIT_REPO[@]}; do
     pushd "$PREFIX/$git_repo" >& /dev/null
 
     if [ -e .git ]; then
-        echo "[ CHCKING ] $PREFIX/$git_repo"
-        ret=`git pull --no-stat | grep "Already up to date\."`
-        if [ "1" == "$ret" ]; then
+        echo "[ CHECKING ] $PREFIX/$git_repo"
+        eval "git pull --no-stat | grep \"Already up to date\.\""
+        ret=$?
+        if [ "$ret" == "1" ]; then
+            echo "[ INDEXING ] $PREFIX/$git_repo"
             cscope -Rkb >& /dev/null
             ctags -R >& /dev/null
             echo "[ UPDATED ] $PREFIX/$git_repo"
         else
-            echo "[ UP2DATE ] $PREFIX/$git_repo"
+            if [ "$1" == "-f" ]; then
+                echo "[ INDEXING ] $PREFIX/$git_repo"
+                cscope -Rkb >& /dev/null
+                ctags -R >& /dev/null
+            fi
+            echo "[ UPTODATE ] $PREFIX/$git_repo"
         fi
     fi
 
