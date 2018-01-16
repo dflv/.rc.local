@@ -4,6 +4,7 @@ Bundle 'hari-rangarajan/CCTree'
 Bundle 'Shougo/vimproc'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'MattesGroeger/vim-bookmarks'
+Bundle 'rking/ag.vim'
 
 UnBundle 'amirh/HTML-AutoCloseTag'
 UnBundle 'pythoncomplete'

@@ -65,7 +65,7 @@ let g:AutoPairsFlyMode = 0
 " keymap
 nnoremap <silent> <F5> :Tagbar<CR>
 nnoremap <silent> <F6> :NERDTreeToggle<CR>
-nnoremap <silent> <F7> :Ack!<CR>
+nnoremap <silent> <F7> :Ag!<CR>
 nnoremap <silent> <F9> :CCTreeLoadXRefDB<CR>
 nnoremap <silent> <F10> :NeoCompleteToggle<CR>
 nnoremap <silent> < :bp<CR>
