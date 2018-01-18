@@ -28,7 +28,7 @@ for git_repo in ${GIT_REPO[@]}; do
             echo "[ INDEXING ] $PREFIX/$git_repo"
             cscope -Rkb >& /dev/null
             ctags -R >& /dev/null
-            echo "[ UPDATED ] $PREFIX/$git_repo"
+            echo "[  UPDATE  ] $PREFIX/$git_repo"
         else
             if [ "$1" == "-f" ]; then
                 echo "[ INDEXING ] $PREFIX/$git_repo"
