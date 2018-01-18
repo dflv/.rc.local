@@ -22,7 +22,7 @@ for git_repo in ${GIT_REPO[@]}; do
 
     if [ -e .git ]; then
         echo "[ CHECKING ] $PREFIX/$git_repo"
-        eval "git pull --no-stat | grep \"Already up to date\.\""
+        eval "git pull --no-stat | grep \"Already up-to-date\.\""
         ret=$?
         if [ "$ret" == "1" ]; then
             echo "[ INDEXING ] $PREFIX/$git_repo"
