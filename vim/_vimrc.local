@@ -63,6 +63,7 @@ let g:AutoPairsCenterLine = 0
 let g:AutoPairsFlyMode = 0
 " remove the boring msg from ag.vim
 let g:ag_mapping_message = 0
+let g:ag_prg = "ag --vimgrep --smart-case --ignore cscope.out --ignore tags"
 
 " keymap
 nnoremap <silent> <F5> :Tagbar<CR>
