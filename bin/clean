@@ -1,0 +1,8 @@
+#!/bin/bash
+
+LIST="./bleachbit.lst"
+
+while IFS='' read -r line || [[ -n "$line"  ]]; do
+    echo "cleaning $line ..."
+    sudo bleachbit --clean $line >& /dev/null
+done < "$LIST"
