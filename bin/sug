@@ -1,24 +1,37 @@
 #!/bin/bash
 
-PREFIX="/Users/niannian/Lab"
+PREFIX="/home/dafu/Lab"
 
 GIT_REPO=(
         "amazon-freertos"
         "darwin-xnu"
         "f9-kernel"
+        "leshan"
         "linux"
-        "lwip"
+        "lwip-contrib"
+        "mbed-cli"
+        "mbed-client"
         "mbed-coap"
         "mbed-os"
         "mbedtls"
+        "mcuboot"
+        "netty-4.1.20.Final"
         "openssl"
         "uvisor"
         "wolfmqtt-0.14.0"
         "zephyr"
+        "zircon"
         )
 
 for git_repo in ${GIT_REPO[@]}; do
+    if [ -f "$PREFIX/$git_repo" ]; then
+        continue
+    fi
+
     pushd "$PREFIX/$git_repo" >& /dev/null
+    if [ "$?" != "0" ]; then
+        continue
+    fi
 
     if [ -e .git ]; then
         echo "[ CHECKING ] $PREFIX/$git_repo"
@@ -37,6 +50,11 @@ for git_repo in ${GIT_REPO[@]}; do
             fi
             echo "[ UPTODATE ] $PREFIX/$git_repo"
         fi
+    else
+        # i have no choice but update the idx
+        echo "[ INDEXING ] $PREFIX/$git_repo"
+        cscope -Rkb >& /dev/null
+        ctags -R >& /dev/null
     fi
 
     popd >& /dev/null
