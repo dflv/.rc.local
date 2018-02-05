@@ -42,4 +42,6 @@ _rep_conf vim vimrc.local
 _rep_conf vim vimrc.before.local
 _rep_conf vim vimrc.bundles.local
 _rep_conf vim gvimrc
+# xterm
+_rep_conf xterm Xresources
 # zsh
