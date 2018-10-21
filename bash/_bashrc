@@ -119,5 +119,3 @@ export PS1='${debian_chroot:+($debian_chroot)}[\u@\h \W]\$ '
 export GREP_OPTIONS="--exclude-dir=.git --exclude-dir=.svn --exclude=cscope.out --exclude=tags"
 export USE_CCACHE=1
 set -o vi
-
-export GREP_OPTIONS="--exclude-dir=.git --exclude-dir=.svn --exclude=cscope.out --exclude=tags"
