@@ -69,9 +69,9 @@ export PATH=".:/home/dafu/Bin:/opt/aarch64-linux-android-4.8/bin:/opt/aarch64-no
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-### added by dafu
-source /usr/share/autojump/autojump.sh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# added by dafu
+### source /usr/share/autojump/autojump.sh
+### source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 set -o vi
 # [vvv] disable history-sharing
 setopt NO_SHARE_HISTORY
@@ -102,6 +102,5 @@ export GREP_OPTIONS="--exclude-dir=.git --exclude-dir=.svn --exclude=cscope.out 
 unset GREP_OPTIONS
 export TERM=xterm-256color
 
-### autorun tmux, keep it the last setting
+# autorun tmux, keep it the last setting
 ### if [ "$TMUX" = "" ]; then tmux; exit; fi
-

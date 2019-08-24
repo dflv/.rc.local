@@ -17,7 +17,7 @@ sudo apt-get update
 sudo apt-get dist-upgrade -y
 
 for pkg in ${PKG_LIST[@]}; do
-    sudo apt-get install $pkg
+    sudo apt-get install $pkg -y
 done
 
 sudo apt-get autoremove
