@@ -1,0 +1,10 @@
+#!/bin/bash
+
+### sudo vmhgfs-fuse -o nonempty -o allow_other .host:/Shared /mnt/hgfs
+
+if ls -1qA ~/Shared | grep -q .
+then
+    :
+else
+    sudo vmhgfs-fuse -o nonempty -o allow_other .host:/Shared /mnt/hgfs
+fi
