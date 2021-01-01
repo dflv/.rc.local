@@ -2,6 +2,7 @@
 
 PKG_LIST=(
         "cscope"
+        "curl"
         "exuberant-ctags"
         "g++"
         "gcc"
@@ -10,6 +11,8 @@ PKG_LIST=(
         "repo"
         "samba"
         "silversearcher-ag"
+        "solccount"
+        "tree"
         "tmux"
         "vim"
         "zsh"
