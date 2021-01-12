@@ -3,6 +3,7 @@
 PKG_LIST=(
         "cscope"
         "curl"
+        "dos2unix"
         "exuberant-ctags"
         "g++"
         "gcc"
