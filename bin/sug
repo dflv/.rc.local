@@ -3,24 +3,9 @@
 PREFIX="/home/dafu/Lab"
 
 GIT_REPO=(
-        "amazon-freertos"
-        "darwin-xnu"
-        "f9-kernel"
-        "leshan"
-        "linux"
-        "lwip-contrib"
-        "mbed-cli"
-        "mbed-client"
-        "mbed-coap"
-        "mbed-os"
-        "mbedtls"
-        "mcuboot"
-        "netty-4.1.20.Final"
-        "openssl"
-        "uvisor"
-        "wolfmqtt-0.14.0"
-        "zephyr"
-        "zircon"
+        "folder0"
+        "folder1"
+	"folder2"
         )
 
 for git_repo in ${GIT_REPO[@]}; do
@@ -35,26 +20,46 @@ for git_repo in ${GIT_REPO[@]}; do
 
     if [ -e .git ]; then
         echo "[ CHECKING ] $PREFIX/$git_repo"
-        eval "git pull --no-stat | grep \"Already up-to-date\.\""
+        eval "git pull --no-stat | grep \"Already up to date\.\""
         ret=$?
         if [ "$ret" == "1" ]; then
             echo "[ INDEXING ] $PREFIX/$git_repo"
-            cscope -Rkb >& /dev/null
-            ctags -R >& /dev/null
+            if [ `echo "$git_repo" | grep "linux"` ]; then
+                find ./arch/arm64 -name "*.[hcS]" > /tmp/$git_repo.files
+                mv ./arch /tmp
+                find . -name "*.[hcS]" >> /tmp/$git_repo.files
+                cat /tmp/$git_repo.files | sort > /tmp/$git_repo.files.2
+                cat /tmp/$git_repo.files.2 | \
+                    grep -v "Documentation" | \
+                    grep -v "\./dbg" >> /tmp/$git_repo.files.3
+                mv /tmp/arch .
+                rm -f ./arch.tgz
+                cscope -Rkb -i/tmp/$git_repo.files.3 >& /dev/null
+                ctags -R -L /tmp/$git_repo.files.3 >& /dev/null
+                rm -f /tmp/$git_repo.files*
+            else
+                cscope -Rkb >& /dev/null
+                ctags -R >& /dev/null
+            fi
             echo "[  UPDATE  ] $PREFIX/$git_repo"
         else
             if [ "$1" == "-f" ]; then
                 echo "[ INDEXING ] $PREFIX/$git_repo"
                 cscope -Rkb >& /dev/null
                 ctags -R >& /dev/null
+                echo "[  UPDATE  ] $PREFIX/$git_repo"
+            else
+                echo "[ UPTODATE ] $PREFIX/$git_repo"
             fi
-            echo "[ UPTODATE ] $PREFIX/$git_repo"
         fi
     else
-        # i have no choice but update the idx
+        echo "[ CHECKING ] $PREFIX/$git_repo"
+        repo sync
+        # i have no choice but idx files
         echo "[ INDEXING ] $PREFIX/$git_repo"
         cscope -Rkb >& /dev/null
         ctags -R >& /dev/null
+        echo "[ UPTODATE ] $PREFIX/$git_repo"
     fi
 
     popd >& /dev/null
