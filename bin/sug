@@ -5,7 +5,7 @@ PREFIX="/home/dafu/Lab"
 GIT_REPO=(
         "folder0"
         "folder1"
-	"folder2"
+        "folder2"
         )
 
 for git_repo in ${GIT_REPO[@]}; do
