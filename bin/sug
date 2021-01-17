@@ -26,14 +26,13 @@ for git_repo in ${GIT_REPO[@]}; do
             echo "[ INDEXING ] $PREFIX/$git_repo"
             if [ `echo "$git_repo" | grep "linux"` ]; then
                 find ./arch/arm64 -name "*.[hcS]" > /tmp/$git_repo.files
-                mv ./arch /tmp
+                mv ./arch /tmp/arch.$git_repo
                 find . -name "*.[hcS]" >> /tmp/$git_repo.files
                 cat /tmp/$git_repo.files | sort > /tmp/$git_repo.files.2
                 cat /tmp/$git_repo.files.2 | \
                     grep -v "Documentation" | \
                     grep -v "\./dbg" >> /tmp/$git_repo.files.3
-                mv /tmp/arch .
-                rm -f ./arch.tgz
+                mv /tmp/arch.$git_repo ./arch
                 cscope -Rkb -i/tmp/$git_repo.files.3 >& /dev/null
                 ctags -R -L /tmp/$git_repo.files.3 >& /dev/null
                 rm -f /tmp/$git_repo.files*
