@@ -5,10 +5,12 @@ FILES_TO_INDEX=./files.to.index
 rm -f cscope.* tags
 if [ -e "./idx.files" ];
 then
+    rm -f cscope.* tags
     cscope -bkq -i$FILES_TO_INDEX &
     ctags -R -L $FILES_TO_INDEX &
     wait
 else
+    rm -f cscope.* tags
     cscope -bkRq &
     ctags -R &
     wait

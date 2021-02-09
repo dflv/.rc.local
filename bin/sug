@@ -33,12 +33,14 @@ for git_repo in ${GIT_REPO[@]}; do
                     grep -v "Documentation" | \
                     grep -v "\./dbg" >> /tmp/$git_repo.files.3
                 mv /tmp/arch.$git_repo ./arch
+                rm -f cscope.* tags
                 cscope -Rkb -i/tmp/$git_repo.files.3 >& /dev/null &
                 ctags -R -L /tmp/$git_repo.files.3 >& /dev/null &
                 wait
                 cp /tmp/$git_repo.files.3 ./files.to.index
                 rm -f /tmp/$git_repo.files*
             else
+                rm -f cscope.* tags
                 cscope -Rkb >& /dev/null &
                 ctags -R >& /dev/null &
                 wait
@@ -47,6 +49,7 @@ for git_repo in ${GIT_REPO[@]}; do
         else
             if [ "$1" == "-f" ]; then
                 echo "[ INDEXING ] $PREFIX/$git_repo"
+                rm -f cscope.* tags
                 cscope -Rkb >& /dev/null &
                 ctags -R >& /dev/null &
                 wait
@@ -60,6 +63,7 @@ for git_repo in ${GIT_REPO[@]}; do
         repo sync
         # i have no choice but idx files
         echo "[ INDEXING ] $PREFIX/$git_repo"
+        rm -f cscope.* tags
         cscope -Rkb >& /dev/null &
         ctags -R >& /dev/null &
         wait
