@@ -15,7 +15,7 @@ cat /tmp/$FILES_TO_INDEX.2 | \
 cp -f /tmp/$FILES_TO_INDEX.3 ./$FILES_TO_INDEX
 rm -f /tmp/$FILES_TO_INDEX*
 mv /tmp/arch .
-echo "run cscope ..."
-cscope -Rkb -i./$FILES_TO_INDEX >& /dev/null
-echo "run ctags ..."
-ctags -L ./$FILES_TO_INDEX >& /dev/null
+echo "run index ..."
+cscope -Rkb -i./$FILES_TO_INDEX >& /dev/null &
+ctags -L ./$FILES_TO_INDEX >& /dev/null &
+wait
