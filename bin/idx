@@ -1,13 +1,17 @@
 #!/bin/bash
 
+FILES_TO_INDEX=./files.to.index
+
 rm -f cscope.* tags
 if [ -e "./idx.files" ];
 then
-    cscope -bkq -i./idx.files
-    ctags -R -L ./idx.files
+    cscope -bkq -i$FILES_TO_INDEX &
+    ctags -R -L $FILES_TO_INDEX &
+    wait
 else
-    cscope -bkRq
-    ctags -R
+    cscope -bkRq &
+    ctags -R &
+    wait
 fi
 
 ### for cctree built from ccglue.sourceforge.net
