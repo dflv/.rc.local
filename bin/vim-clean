@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -f ~/.vimswap/*
-rm -f ~/.vimview/*
+rm -f ~/.vimviews/*
 rm -f ~/.vimundo/*
