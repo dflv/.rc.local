@@ -12,7 +12,7 @@ PKG_LIST=(
         "repo"
         "samba"
         "silversearcher-ag"
-        "solccount"
+        "sloccount"
         "tree"
         "tmux"
         "vim"
