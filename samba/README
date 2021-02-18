@@ -1,0 +1,3 @@
+0. $ sudo apt install samba
+1. $ sudo smbpasswd -a dafu
+2. Modify /etc/samba/smb.conf according to smb.conf.
