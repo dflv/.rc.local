@@ -5,7 +5,7 @@ Bundle 'Shougo/vimproc'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'MattesGroeger/vim-bookmarks'
 Bundle 'rking/ag.vim'
-Bundle 'bfrg/vim-cpp-modern'
+Bundle 'justinmk/vim-syntax-extra'
 
 UnBundle 'amirh/HTML-AutoCloseTag'
 UnBundle 'pythoncomplete'
