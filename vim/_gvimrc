@@ -1,5 +1,5 @@
 set mouse=a
-set guifont=Ubuntu\ Mono\ 13
+set guifont=Hack\ 13
 set guioptions-=m
 set guioptions-=r
 set guioptions+=T
