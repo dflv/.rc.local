@@ -20,6 +20,7 @@ set t_Co=256
 set nolist
 " set right margin
 set colorcolumn=81
+set shell=/bin/zsh
 
 colorscheme kolor
 
