@@ -6,6 +6,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'MattesGroeger/vim-bookmarks'
 Bundle 'rking/ag.vim'
 Bundle 'justinmk/vim-syntax-extra'
+Bundle 'Rykka/riv.vim'
 
 UnBundle 'amirh/HTML-AutoCloseTag'
 UnBundle 'pythoncomplete'
