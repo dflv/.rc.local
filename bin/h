@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$1" == "" ];
+then
+    echo "ERROR - invalid parameter, no file to dump"
+    exit
+fi
+
+if [ ! -f "$1" ];
+then
+    echo "ERROR - invalid parameter, no file named $1"
+    exit
+fi
+
+
+if [ "$2" != "" ];
+then
+    echo "ERROR - invalid parameter, no multi-file support"
+    exit
+fi
+
+hexdump -Cv $1 | less
