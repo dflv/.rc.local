@@ -1,16 +1,43 @@
 #!/bin/bash
 
-FILES_TO_INDEX=./files.to.index
 
-rm -f cscope.* tags
+if [ "$1" != "" ];
+then
+    FILES_TO_INDEX=./files.to.index.$1
+    CSCOPE_FILES=cscope.*.$1
+    TAGS_FILES=tags.$1
+else
+    FILES_TO_INDEX=./files.to.index
+    CSCOPE_FILES=cscope.*
+    TAGS_FILES=tags
+fi
+
+rm -f $CSCOPE_FILES $TAG_FILES
+
 if [ -e "$FILES_TO_INDEX" ];
 then
-    rm -f cscope.* tags
+    # by all means, just remove the links blindly.
+    unlink cscope.in.out >& /dev/null
+    unlink cscope.out >& /dev/null
+    unlink cscope.po.out >& /dev/null
+    unlink tags
+
     cscope -bkq -i$FILES_TO_INDEX &
     ctags -R -L $FILES_TO_INDEX &
     wait
+
+    if [ "$1" != "" ];
+    then
+        mv cscope.in.out cscope.in.out.$1
+        mv cscope.out cscope.out.$1
+        mv cscope.po.out cscope.po.out.$1
+        mv tags tags.$1
+        ln -s cscope.in.out.$1 cscope.in.out
+        ln -s cscope.out.$1 cscope.out
+        ln -s cscope.po.out.$1 cscope.po.out
+        ln -s tags.$1 tags
+    fi
 else
-    rm -f cscope.* tags
     cscope -bkRq &
     ctags -R &
     wait
