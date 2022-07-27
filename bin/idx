@@ -3,7 +3,7 @@
 FILES_TO_INDEX=./files.to.index
 
 rm -f cscope.* tags
-if [ -e "./idx.files" ];
+if [ -e "$FILES_TO_INDEX" ];
 then
     rm -f cscope.* tags
     cscope -bkq -i$FILES_TO_INDEX &
