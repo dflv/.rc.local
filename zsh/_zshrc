@@ -78,9 +78,10 @@ setopt NO_SHARE_HISTORY
 setopt APPEND_HISTORY
 # [^^^] disable history-sharing
 bindkey "^?" backward-delete-char
-bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-char
+bindkey '^R' history-incremental-search-backward
 bindkey "^U" kill-line
+bindkey "^W" backward-kill-word
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
