@@ -4,40 +4,65 @@
 if [ "$1" != "" ];
 then
     FILES_TO_INDEX=./files.to.index.$1
+    AG_FILES=ag.files.$1
     CSCOPE_FILES=cscope.*.$1
     TAGS_FILES=tags.$1
 else
     FILES_TO_INDEX=./files.to.index
+    AG_FILES=ag.files
     CSCOPE_FILES=cscope.*
     TAGS_FILES=tags
 fi
 
-rm -f $CSCOPE_FILES $TAG_FILES
+# by all means, just remove the links blindly.
+unlink ag.files >& /dev/null
+unlink cscope.in.out >& /dev/null
+unlink cscope.out >& /dev/null
+unlink cscope.po.out >& /dev/null
+unlink tags >& /dev/null
+# and the links also.
+rm -f ag.files.* cscope.* tags.*
 
 if [ -e "$FILES_TO_INDEX" ];
 then
-    # by all means, just remove the links blindly.
-    unlink cscope.in.out >& /dev/null
-    unlink cscope.out >& /dev/null
-    unlink cscope.po.out >& /dev/null
-    unlink tags
+    echo "generate indexes according to $FILES_TO_INDEX ..."
 
-    cscope -bkq -i$FILES_TO_INDEX &
-    ctags -R -L $FILES_TO_INDEX &
+    tmp_files_to_index=$FILES_TO_INDEX.`openssl rand -hex 32`
+    while IFS='' read -r line || [[ -n "$line" ]];
+    do
+        # remove the lines whose first char is "#"
+        first_char=${line:0:1}
+        if [ "$first_char" != "#" ] && [ "$line" != "" ];
+        then
+            echo "$line" >> $AG_FILES
+            last_char=${line: -1}
+            if [ "$last_char" == "c" ] || [ "$last_char" == "S" ] || [ "$last_char" == "h" ];
+            then
+                echo "$line" >> $tmp_files_to_index
+            fi
+        fi
+    done < "$FILES_TO_INDEX"
+    sync
+
+    cscope -bkq -i$tmp_files_to_index &
+    ctags -R -L $tmp_files_to_index &
     wait
-
+    rm -f $tmp_files_to_index
     if [ "$1" != "" ];
     then
         mv cscope.in.out cscope.in.out.$1
         mv cscope.out cscope.out.$1
         mv cscope.po.out cscope.po.out.$1
         mv tags tags.$1
+        ln -s ag.files.$1 ag.files
         ln -s cscope.in.out.$1 cscope.in.out
         ln -s cscope.out.$1 cscope.out
         ln -s cscope.po.out.$1 cscope.po.out
         ln -s tags.$1 tags
     fi
 else
+    echo "generate full indexes ..."
+    find . -name "*.[cSh]" > ag.files
     cscope -bkRq &
     ctags -R &
     wait
