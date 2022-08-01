@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ "$1" == "" ];
+then
+    echo "Search PATTERN in the files listed in ./ag.files"
+    echo "Usage: agi PATTERN"
+    exit
+fi
+
+ag -a $1 `cat ./ag.files`
