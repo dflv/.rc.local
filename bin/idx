@@ -20,34 +20,48 @@ unlink cscope.in.out >& /dev/null
 unlink cscope.out >& /dev/null
 unlink cscope.po.out >& /dev/null
 unlink tags >& /dev/null
-# and the links also.
+# and the sub-fixes also.
 rm -f ag.files.* cscope.* tags.*
 
 if [ -e "$FILES_TO_INDEX" ];
 then
     echo "generate indexes according to $FILES_TO_INDEX ..."
 
-    tmp_files_to_index=$FILES_TO_INDEX.`openssl rand -hex 32`
+    tmp_ag_files=$AG_FILES.`openssl rand -hex 16`
+    tmp_files_to_index=$FILES_TO_INDEX.`openssl rand -hex 16`
+    # keep one copy for multi-instanced lines
+    sort -u $FILES_TO_INDEX > $tmp_files_to_index.000
     while IFS='' read -r line || [[ -n "$line" ]];
     do
         # remove the lines whose first char is "#"
         first_char=${line:0:1}
         if [ "$first_char" != "#" ] && [ "$line" != "" ];
         then
-            echo "$line" >> $AG_FILES
-            last_char=${line: -1}
-            if [ "$last_char" == "c" ] || [ "$last_char" == "S" ] || [ "$last_char" == "h" ];
+            if [ -f "$line" ];
             then
-                echo "$line" >> $tmp_files_to_index
+                echo "$line" >> $tmp_ag_files
+                last_two_chars=${line: -2}
+                if [ "$last_two_chars" == ".c" ] || [ "$last_two_chars" == ".S" ] || [ "$last_two_chars" == ".h" ];
+                then
+                    echo "$line" >> $tmp_files_to_index.001
+                fi
+            elif [ -d "$line" ];
+            then
+                # just add header files
+               find $line -name "*.h" | tee -a $tmp_ag_files $tmp_files_to_index.001 >& /dev/null
             fi
         fi
-    done < "$FILES_TO_INDEX"
+    done < "$tmp_files_to_index.000"
+    sort -u $tmp_ag_files > $AG_FILES
+    sort -u $tmp_files_to_index.001 > $tmp_files_to_index.002
     sync
 
-    cscope -bkq -i$tmp_files_to_index &
-    ctags -R -L $tmp_files_to_index &
+    cscope -bkq -i$tmp_files_to_index.002 &
+    ctags -R -L $tmp_files_to_index.002 &
     wait
-    rm -f $tmp_files_to_index
+    rm -f $tmp_ag_files
+    rm -f $tmp_files_to_index.*
+
     if [ "$1" != "" ];
     then
         mv cscope.in.out cscope.in.out.$1
