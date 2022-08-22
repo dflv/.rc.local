@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ARCH=arm64
-FILES_TO_INDEX=files.to.index
+FILES_TO_INDEX=ag.files
 
 rm -f cscope.* tags
 echo "gen index ..."
