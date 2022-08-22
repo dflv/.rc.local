@@ -7,4 +7,4 @@ then
     exit
 fi
 
-ag -a --nobreak $1 `cat ./ag.files`
+cat ./ag.files | xargs ag -a --nobreak $1
