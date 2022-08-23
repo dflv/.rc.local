@@ -3,10 +3,21 @@
 
 if [ "$1" != "" ];
 then
-    FILES_TO_INDEX=./files.to.index.$1
-    AG_FILES=ag.files.$1
-    CSCOPE_FILES=cscope.*.$1
-    TAGS_FILES=tags.$1
+    # idx files.to.index.KEYWORD or KEYWORD directly
+
+    to_idx=$1
+    prefix_of_to_idx=${to_idx:0:15}
+    if [ "$prefix_of_to_idx" == "files.to.index." ];
+    then
+        subfix_of_to_idx=${to_idx:15}
+        FILES_TO_INDEX=$to_idx
+    else
+        subfix_of_to_idx=$to_idx
+        FILES_TO_INDEX=./files.to.index.$to_idx
+    fi
+    AG_FILES=ag.files.$subfix_of_to_idx
+    CSCOPE_FILES=cscope.*.$subfix_of_to_idx
+    TAGS_FILES=tags.$subfix_of_to_idx
 else
     FILES_TO_INDEX=./files.to.index
     AG_FILES=ag.files
@@ -64,15 +75,15 @@ then
 
     if [ "$1" != "" ];
     then
-        mv cscope.in.out cscope.in.out.$1
-        mv cscope.out cscope.out.$1
-        mv cscope.po.out cscope.po.out.$1
-        mv tags tags.$1
-        ln -s ag.files.$1 ag.files
-        ln -s cscope.in.out.$1 cscope.in.out
-        ln -s cscope.out.$1 cscope.out
-        ln -s cscope.po.out.$1 cscope.po.out
-        ln -s tags.$1 tags
+        mv cscope.in.out cscope.in.out.$subfix_of_to_idx
+        mv cscope.out cscope.out.$subfix_of_to_idx
+        mv cscope.po.out cscope.po.out.$subfix_of_to_idx
+        mv tags tags.$subfix_of_to_idx
+        ln -s ag.files.$subfix_of_to_idx ag.files
+        ln -s cscope.in.out.$subfix_of_to_idx cscope.in.out
+        ln -s cscope.out.$subfix_of_to_idx cscope.out
+        ln -s cscope.po.out.$subfix_of_to_idx cscope.po.out
+        ln -s tags.$subfix_of_to_idx tags
     fi
 else
     echo "generate full indexes ..."
