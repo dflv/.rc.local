@@ -1,11 +1,10 @@
 #!/bin/bash
 
-
 if [ "$1" != "" ];
 then
     # idx files.to.index.KEYWORD or KEYWORD directly
 
-    to_idx=$1
+    to_idx=$(basename ${1})
     prefix_of_to_idx=${to_idx:0:15}
     if [ "$prefix_of_to_idx" == "files.to.index." ];
     then
