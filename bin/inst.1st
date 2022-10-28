@@ -10,6 +10,7 @@ PKG_LIST=(
         "gcc"
         "git"
         "openssh-server"
+        "remmina"
         "repo"
         "samba"
         "silversearcher-ag"
