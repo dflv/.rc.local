@@ -3,10 +3,17 @@
 PREFIX="/home/dafu/Lab"
 
 GIT_REPO=(
-        "folder0"
-        "folder1"
-        "folder2"
-        )
+    "folder0"
+    "folder1"
+    "folder2"
+    "folder3"
+    "folder4"
+)
+
+GIT_REPO_NO_IDX=(
+    "folder1"
+    "folder3"
+)
 
 for git_repo in ${GIT_REPO[@]}; do
     if [ -f "$PREFIX/$git_repo" ]; then
@@ -22,52 +29,78 @@ for git_repo in ${GIT_REPO[@]}; do
         echo "[ CHECKING ] $PREFIX/$git_repo"
         eval "git pull --no-stat | grep \"Already up to date\.\""
         ret=$?
-        if [ "$ret" == "1" ]; then
-            echo "[ INDEXING ] $PREFIX/$git_repo"
-            if [ `echo "$git_repo" | grep "linux"` ]; then
-                find ./arch/arm64 -name "*.[hcS]" > /tmp/$git_repo.files
-                mv ./arch /tmp/arch.$git_repo
-                find . -name "*.[hcS]" >> /tmp/$git_repo.files
-                cat /tmp/$git_repo.files | sort > /tmp/$git_repo.files.2
-                cat /tmp/$git_repo.files.2 | \
-                    grep -v "Documentation" | \
-                    grep -v "\./dbg" >> /tmp/$git_repo.files.3
-                mv /tmp/arch.$git_repo ./arch
-                rm -f cscope.* tags
-                cscope -Rkb -i/tmp/$git_repo.files.3 >& /dev/null &
-                ctags -R -L /tmp/$git_repo.files.3 >& /dev/null &
-                wait
-                cp /tmp/$git_repo.files.3 ./files.to.index
-                rm -f /tmp/$git_repo.files*
-            else
-                rm -f cscope.* tags
-                cscope -Rkb >& /dev/null &
-                ctags -R >& /dev/null &
-                wait
+
+        skip=0
+        for git_repo_no_idx in ${GIT_REPO_NO_IDX[@]}; do
+            if [ "$git_repo_no_idx" == "$git_repo" ]; then
+                skip=1
+                break
             fi
-            echo "[  UPDATE  ] $PREFIX/$git_repo"
-        else
-            if [ "$1" == "-f" ]; then
+        done
+
+        if [ "$skip" == "0" ]; then
+            if [ "$ret" == "1" ]; then
                 echo "[ INDEXING ] $PREFIX/$git_repo"
-                rm -f cscope.* tags
-                cscope -Rkb >& /dev/null &
-                ctags -R >& /dev/null &
-                wait
+                if [ `echo "$git_repo" | grep "linux"` ]; then
+                    find ./arch/arm64 -name "*.[hcS]" > /tmp/$git_repo.files
+                    mv ./arch /tmp/arch.$git_repo
+                    find . -name "*.[hcS]" >> /tmp/$git_repo.files
+                    cat /tmp/$git_repo.files | sort > /tmp/$git_repo.files.2
+                    cat /tmp/$git_repo.files.2 | \
+                        grep -v "Documentation" | \
+                        grep -v "\./dbg" >> /tmp/$git_repo.files.3
+                    mv /tmp/arch.$git_repo ./arch
+                    rm -f cscope.* tags
+                    cscope -Rkb -i/tmp/$git_repo.files.3 >& /dev/null &
+                    ctags -R -L /tmp/$git_repo.files.3 >& /dev/null &
+                    wait
+                    cp /tmp/$git_repo.files.3 ./files.to.index
+                    rm -f /tmp/$git_repo.files*
+                else
+                    rm -f cscope.* tags
+                    cscope -Rkb >& /dev/null &
+                    ctags -R >& /dev/null &
+                    wait
+                fi
                 echo "[  UPDATE  ] $PREFIX/$git_repo"
             else
-                echo "[ UPTODATE ] $PREFIX/$git_repo"
+                if [ "$1" == "-f" ]; then
+                    echo "[ INDEXING ] $PREFIX/$git_repo"
+                    rm -f cscope.* tags
+                    cscope -Rkb >& /dev/null &
+                    ctags -R >& /dev/null &
+                    wait
+                    echo "[  UPDATE  ] $PREFIX/$git_repo"
+                else
+                    echo "[ UPTODATE ] $PREFIX/$git_repo"
+                fi
             fi
-        fi
+        else
+            echo "[   SKIP   ] $PREFIX/$git_repo"
+        fi # $skip == 0
     else
         echo "[ CHECKING ] $PREFIX/$git_repo"
         repo sync
-        # i have no choice but idx files
-        echo "[ INDEXING ] $PREFIX/$git_repo"
-        rm -f cscope.* tags
-        cscope -Rkb >& /dev/null &
-        ctags -R >& /dev/null &
-        wait
-        echo "[ UPTODATE ] $PREFIX/$git_repo"
+
+        skip=0
+        for git_repo_no_idx in ${GIT_REPO_NO_IDX[@]}; do
+            if [ "$git_repo_no_idx" == "$git_repo" ]; then
+                skip=1
+                break
+            fi
+        done
+
+        if [ "$skip" == "0" ]; then
+            # i have no choice but idx files
+            echo "[ INDEXING ] $PREFIX/$git_repo"
+            rm -f cscope.* tags
+            cscope -Rkb >& /dev/null &
+            ctags -R >& /dev/null &
+            wait
+            echo "[ UPTODATE ] $PREFIX/$git_repo"
+        else
+            echo "[   SKIP   ] $PREFIX/$git_repo"
+        fi # $skip == 0
     fi
 
     popd >& /dev/null
