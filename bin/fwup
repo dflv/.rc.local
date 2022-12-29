@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# need "sudo apt install fwupd" first.
+
+fwupdmgr get-devices
+fwupdmgr get-updates
+fwupdmgr update
+fwupdmgr get-updates
