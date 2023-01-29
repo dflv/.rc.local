@@ -76,7 +76,7 @@ for git_repo in ${GIT_REPO[@]}; do
                 fi
             fi
         else
-            echo "[   SKIP   ] $PREFIX/$git_repo"
+            echo "[  IGNORE  ] $PREFIX/$git_repo"
         fi # $skip == 0
     else
         echo "[ CHECKING ] $PREFIX/$git_repo"
@@ -99,7 +99,7 @@ for git_repo in ${GIT_REPO[@]}; do
             wait
             echo "[ UPTODATE ] $PREFIX/$git_repo"
         else
-            echo "[   SKIP   ] $PREFIX/$git_repo"
+            echo "[  IGNORE  ] $PREFIX/$git_repo"
         fi # $skip == 0
     fi
 
