@@ -141,7 +141,7 @@ export TERM=xterm-256color
 # autorun tmux, keep it the last setting
 if [ "$TMUX" = "" ];
 then
-    if !pstree -s $$ | grep -wq code;
+    if ! `pstree -s $$ | grep -wq code`;
     then
         tmux;
         exit;
