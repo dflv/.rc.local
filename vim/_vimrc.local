@@ -40,7 +40,7 @@ let g:nerdtree_tabs_startup_cd = 0
 let g:tagbar_sort = 0
 let g:tagbar_autofocus = 1
 let g:tagbar_left = 1
-let g:tagbar_width = 50
+let g:tagbar_width = 45
 let g:indent_guides_auto_colors = 0
 " NOTE:
 " <Leader><Leader>w to call EasyMotion
