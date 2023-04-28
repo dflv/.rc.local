@@ -27,7 +27,7 @@ for git_repo in ${GIT_REPO[@]}; do
 
     if [ -e .git ]; then
         echo "[ CHECKING ] $PREFIX/$git_repo"
-        eval "git pull --no-stat | grep \"Already up to date\.\""
+        eval "git pull --recurse-submodules --no-stat | grep \"Already up to date\.\""
         ret=$?
 
         skip=0
