@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-export PATH=~/Bin:/opt/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-elf/bin:$PATH
+export PATH=~/Bin:/opt/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-elf/bin:/opt/gcc-arm-none-eabi-10.3-2021.10/bin:$PATH
 
 # added by dafu
 ### source /usr/share/autojump/autojump.sh
@@ -133,6 +133,7 @@ alias rm='rm -i'
 
 alias ag='ag --case-sensitive --ignore cscope.out --ignore tags --nobreak'
 alias hi='history'
+alias rst='formiko'
 
 export GREP_OPTIONS="--exclude-dir=.git --exclude-dir=.svn --exclude=cscope.out --exclude=tags --exclude=.*.o.cmd"
 unset GREP_OPTIONS
