@@ -133,7 +133,7 @@ alias rm='rm -i'
 
 alias ag='ag --case-sensitive --ignore cscope.out --ignore tags --nobreak'
 alias hi='history'
-alias rst='formiko'
+alias rst='formiko -p'
 
 export GREP_OPTIONS="--exclude-dir=.git --exclude-dir=.svn --exclude=cscope.out --exclude=tags --exclude=.*.o.cmd"
 unset GREP_OPTIONS
