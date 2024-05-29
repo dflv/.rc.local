@@ -2,7 +2,7 @@
 
 ! Use a nice truetype font and size by default...
 xterm*faceName: Hack
-xterm*faceSize: 13
+xterm*faceSize: 14
 
 ! Every shell is a login shell by default (for inclusion of all necessary environment variables)
 xterm*loginshell: true
