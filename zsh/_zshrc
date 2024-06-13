@@ -139,6 +139,9 @@ export GREP_OPTIONS="--exclude-dir=.git --exclude-dir=.svn --exclude=cscope.out 
 unset GREP_OPTIONS
 export TERM=xterm-256color
 
+# blinking bar style cursor, for xterm.
+echo -e -n "\x1b[\x35 q"
+
 # autorun tmux, keep it the last setting
 if [ "$TMUX" = "" ];
 then
