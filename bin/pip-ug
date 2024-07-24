@@ -1,12 +1,15 @@
 #!/bin/bash
 
+PIP=pip3
 RES_LOG_FILE=/tmp/pip-ug.`date +"%s"`.res.log
 
-pip3 list -o | cut -f1 -d' ' | tr " " "\n" | awk '{if(NR>=3)print}' | cut -d' ' -f1 >& $RES_LOG_FILE
+$PIP list -o | cut -f1 -d' ' | tr " " "\n" | awk '{if(NR>=3)print}' | cut -d' ' -f1 >& $RES_LOG_FILE
 if [ $(wc -c < "$RES_LOG_FILE") -eq 0 ]; then
     rm $RES_LOG_FILE
+    $PIP cache purge >& /dev/null
     exit
 fi
 
-cat $RES_LOG_FILE | xargs -n1 pip install -U
+cat $RES_LOG_FILE | xargs -n1 $PIP install -U
 rm $RES_LOG_FILE
+$PIP cache purge >& /dev/null
